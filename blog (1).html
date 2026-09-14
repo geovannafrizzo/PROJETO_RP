@@ -1,0 +1,767 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ensaio.</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,500;1,9..144,600&family=Instrument+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --blush:#f3c8bb;
+    --blush-deep:#e8a893;
+    --sage:#96ab84;
+    --sage-deep:#6f8560;
+    --mustard:#e3a63f;
+    --coral:#e2603f;
+    --teal:#a9c2c4;
+    --plum:#241b28;
+    --line:#e4dcd0;
+    --paper:#fffdfa;
+    --cream:#f6efe4;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--plum);
+    font-family:'Instrument Sans', sans-serif;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3,.serif{
+    font-family:'Fraunces', serif;
+    margin:0;
+    line-height:1.02;
+  }
+  a{color:inherit;text-decoration:none;}
+  svg{display:block;}
+  button{font-family:inherit;}
+
+  /* ---------- top nav ---------- */
+  .topbar{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:24px 5vw;
+    background:var(--paper);
+    position:sticky;
+    top:0;
+    z-index:50;
+    gap:16px;
+    flex-wrap:wrap;
+  }
+  .logo{
+    font-family:'Fraunces', serif;
+    font-weight:600;
+    font-style:italic;
+    font-size:1.7rem;
+  }
+  .navlinks{
+    display:flex;
+    gap:30px;
+    flex-wrap:wrap;
+  }
+  .nav-link{
+    background:none;
+    border:none;
+    cursor:pointer;
+    font-size:0.72rem;
+    letter-spacing:.09em;
+    text-transform:uppercase;
+    color:var(--plum);
+    padding:4px 0;
+    border-bottom:2px solid transparent;
+  }
+  .nav-link.active{
+    border-bottom:2px solid var(--coral);
+    color:var(--coral);
+  }
+  .nav-right{display:flex; align-items:center; gap:16px;}
+  .cta-pill{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    border:1px solid var(--plum);
+    background:var(--paper);
+    padding:9px 18px;
+    border-radius:999px;
+    font-size:0.78rem;
+    letter-spacing:.03em;
+    cursor:pointer;
+  }
+  .cta-pill .dot{width:8px; height:8px; border-radius:50%; background:var(--coral);}
+
+  /* ---------- sections ---------- */
+  section{display:none;}
+  section.active{display:block;}
+
+  /* ==================== HERO ==================== */
+  .hero{
+    position:relative;
+    padding:70px 5vw 60px;
+    background-image:
+      linear-gradient(var(--line) 1px, transparent 1px),
+      linear-gradient(90deg, var(--line) 1px, transparent 1px);
+    background-size:30px 30px;
+    overflow:visible;
+  }
+  .hero-inner{max-width:640px; margin:0 auto; text-align:center; position:relative;}
+  .sticker-mark{
+    position:absolute;
+    top:-14px; left:calc(50% - 130px);
+    width:34px; height:34px;
+    color:var(--coral);
+    transform:rotate(-12deg);
+  }
+  .sticker-bubble{
+    position:absolute;
+    top:-6px; right:calc(50% - 150px);
+  }
+  .sticker-dot{
+    position:absolute;
+    bottom:30px; right:calc(50% - 190px);
+    width:38px; height:38px;
+    border-radius:50%;
+    background:var(--sage);
+    display:flex; align-items:center; justify-content:center;
+    border:1px solid var(--plum);
+  }
+  .hero h1{font-weight:600; letter-spacing:-.01em;}
+  .hero .line1{
+    display:inline-block;
+    font-size:clamp(1.6rem,3.4vw,2.1rem);
+    background:var(--mustard);
+    padding:2px 14px;
+    margin-bottom:10px;
+  }
+  .hero .line2{
+    font-size:clamp(2.6rem,7vw,4.6rem);
+    display:block;
+  }
+  .hero .line3{
+    font-size:clamp(2rem,5vw,3.2rem);
+    display:block;
+    padding-left:8%;
+    color:var(--coral);
+    font-style:italic;
+    font-weight:500;
+  }
+  .float-badge{
+    position:absolute;
+    left:-6%;
+    top:46%;
+    background:var(--teal);
+    border:1px solid var(--plum);
+    padding:10px 14px;
+    border-radius:12px;
+    font-size:0.66rem;
+    line-height:1.35;
+    text-transform:uppercase;
+    letter-spacing:.03em;
+    max-width:130px;
+    text-align:left;
+    display:none;
+  }
+  @media(min-width:900px){ .float-badge{display:block;} }
+  .hero-cta{margin-top:34px;}
+  .hero-cta .btn{
+    background:var(--paper);
+    color:var(--plum);
+    border:1.5px solid var(--plum);
+  }
+  .hero-cta .btn .dot{
+    width:8px; height:8px; border-radius:50%; background:var(--mustard); display:inline-block; margin-right:8px;
+  }
+
+  .btn{
+    display:inline-flex;
+    align-items:center;
+    background:var(--plum);
+    color:var(--paper);
+    padding:13px 26px;
+    border-radius:999px;
+    font-size:0.9rem;
+    border:none;
+    cursor:pointer;
+  }
+  .btn.outline{background:transparent; color:var(--plum); border:1px solid var(--plum);}
+  .btn.coral{background:var(--coral); color:var(--paper);}
+
+  /* ==================== MARQUEE ==================== */
+  .marquee{background:var(--sage); border-top:1px solid var(--plum); border-bottom:1px solid var(--plum); overflow:hidden; white-space:nowrap;}
+  .marquee-track{display:inline-block; padding:8px 0; animation:scroll 28s linear infinite; font-size:0.76rem; font-weight:600; letter-spacing:.05em; text-transform:uppercase; color:var(--plum);}
+  .marquee-track span{margin:0 1.2em;}
+  @keyframes scroll{0%{transform:translateX(0);}100%{transform:translateX(-50%);}}
+
+  /* ==================== KICKER ==================== */
+  .kicker-section{padding:64px 5vw 20px; text-align:center;}
+  .kicker-label{
+    display:flex; align-items:center; justify-content:center; gap:8px;
+    font-size:0.75rem; letter-spacing:.08em; text-transform:uppercase; color:#7a6d74;
+    margin-bottom:22px;
+  }
+  .kicker-section h2{font-size:clamp(1.7rem,4vw,2.5rem); font-weight:600; max-width:640px; margin:0 auto;}
+  .kicker-section p{max-width:480px; margin:20px auto 0; color:#5c4f57; font-size:0.95rem; line-height:1.6;}
+
+  /* ==================== STRIP (photos + cards) ==================== */
+  .strip-wrap{position:relative; margin-top:50px; padding-bottom:70px;}
+  .strip{
+    display:flex;
+    gap:0;
+    overflow-x:auto;
+    scrollbar-width:none;
+    padding:0 5vw;
+  }
+  .strip::-webkit-scrollbar{display:none;}
+  .strip-item{
+    flex:0 0 240px;
+    min-height:300px;
+    border:1px solid var(--plum);
+    margin-right:-1px;
+    display:flex;
+    flex-direction:column;
+  }
+  .strip-photo{
+    background:var(--cream);
+    display:flex; align-items:center; justify-content:center;
+  }
+  .strip-card{padding:26px 22px; display:flex; flex-direction:column;}
+  .strip-card h3{font-size:1.05rem; margin-bottom:12px; font-weight:600;}
+  .strip-card p{font-size:0.85rem; line-height:1.5; margin:0 0 18px; flex:1;}
+  .strip-card .btn{align-self:flex-start; padding:9px 18px; font-size:0.78rem;}
+  .strip-tag{
+    position:absolute;
+    left:5vw; bottom:16px;
+    background:var(--teal);
+    border:1px solid var(--plum);
+    padding:8px 16px;
+    border-radius:999px;
+    font-size:0.72rem;
+    text-transform:uppercase;
+    letter-spacing:.03em;
+  }
+  .strip-arrow{
+    position:absolute;
+    right:5vw; top:50%; transform:translateY(-50%);
+    width:44px; height:44px;
+    border-radius:50%;
+    background:var(--paper);
+    border:1px solid var(--plum);
+    display:flex; align-items:center; justify-content:center;
+  }
+
+  /* ==================== MEMBERSHIP ==================== */
+  .membership{
+    padding:70px 5vw;
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:50px;
+    align-items:center;
+  }
+  .membership-copy{position:relative;}
+  .membership-label{font-size:0.75rem; text-transform:uppercase; letter-spacing:.08em; color:var(--coral); margin-bottom:14px; font-weight:600;}
+  .membership-copy h2{font-size:clamp(1.8rem,4vw,2.5rem); font-weight:600; margin-bottom:20px;}
+  .membership-copy > p{font-size:0.95rem; color:#5c4f57; line-height:1.65; max-width:420px; margin:0 0 16px;}
+  .membership-note{font-size:0.85rem; color:#8a7c83; margin-bottom:26px;}
+  .sparkle{position:absolute; top:-46px; right:30%; color:var(--mustard);}
+  .membership-visual{
+    position:relative;
+    aspect-ratio:4/3.4;
+    border-radius:20px;
+    background:var(--sage);
+    display:flex; align-items:center; justify-content:center;
+    border:1px solid var(--plum);
+  }
+  .membership-visual .circle{
+    position:absolute;
+    width:46px; height:46px;
+    border-radius:50%;
+    background:var(--paper);
+    border:1px solid var(--plum);
+  }
+  .membership-visual .c1{top:20px; left:26px;}
+  .membership-visual .c2{top:20px; left:82px;}
+  @media(max-width:820px){.membership{grid-template-columns:1fr;}}
+
+  /* ==================== SECTION HEAD (used across pages) ==================== */
+  .mini-hero{
+    padding:50px 5vw 34px;
+    text-align:center;
+    background-image:
+      linear-gradient(var(--line) 1px, transparent 1px),
+      linear-gradient(90deg, var(--line) 1px, transparent 1px);
+    background-size:26px 26px;
+  }
+  .mini-hero p.tag{
+    color:var(--coral); font-size:0.78rem; font-weight:600; letter-spacing:.05em; text-transform:uppercase; margin-bottom:14px;
+  }
+  .mini-hero h2{font-size:clamp(1.9rem,4.5vw,2.7rem); font-weight:600;}
+
+  .section-pad{padding:56px 5vw 70px;}
+
+  /* article grid */
+  .grid-articles{display:grid; grid-template-columns:repeat(3,1fr); gap:22px; max-width:1100px; margin:0 auto;}
+  @media(max-width:900px){.grid-articles{grid-template-columns:repeat(2,1fr);}}
+  @media(max-width:600px){.grid-articles{grid-template-columns:1fr;}}
+  .card{border:1px solid var(--plum); border-radius:16px; overflow:hidden; background:var(--paper); display:flex; flex-direction:column;}
+  .card-media{height:120px; display:flex; align-items:center; justify-content:center;}
+  .card-body{padding:20px;}
+  .card-cat{font-size:0.7rem; text-transform:uppercase; letter-spacing:.06em; font-weight:600; color:var(--coral); margin-bottom:9px; display:block;}
+  .card h3{font-size:1.05rem; font-weight:600; margin-bottom:9px;}
+  .card p{font-size:0.86rem; color:#5c4f57; line-height:1.5; margin:0 0 14px;}
+  .read-more{font-size:0.82rem; text-decoration:underline; text-underline-offset:3px;}
+
+  /* ==================== MEMBERS BAND ==================== */
+  .members-band{
+    position:relative;
+    background:var(--blush);
+    background-image:repeating-linear-gradient(135deg, rgba(255,255,255,.35) 0 2px, transparent 2px 14px);
+    border-top:1px solid var(--plum);
+    border-bottom:1px solid var(--plum);
+    padding:56px 0 70px;
+  }
+  .members-band h2{text-align:center; font-size:clamp(1.7rem,4vw,2.3rem); font-weight:600; margin-bottom:40px;}
+  .member-row-wrap{position:relative; padding:0 5vw;}
+  .member-row{
+    display:flex;
+    gap:18px;
+    overflow-x:auto;
+    scrollbar-width:none;
+  }
+  .member-row::-webkit-scrollbar{display:none;}
+  .member{
+    flex:0 0 190px;
+    background:var(--paper);
+    border:1px solid var(--plum);
+    border-radius:16px;
+    padding:22px 16px;
+    text-align:center;
+  }
+  .member-avatar{
+    width:60px; height:60px; border-radius:50%; margin:0 auto 14px;
+    display:flex; align-items:center; justify-content:center; border:1px solid var(--plum);
+  }
+  .member h4{font-size:0.92rem; font-weight:600; margin-bottom:5px;}
+  .member p{font-size:0.76rem; color:#5c4f57; margin:0;}
+  .carousel-arrow{
+    position:absolute; top:50%; transform:translateY(-50%);
+    width:40px; height:40px; border-radius:50%;
+    background:var(--paper); border:1px solid var(--plum);
+    display:flex; align-items:center; justify-content:center;
+    cursor:pointer;
+  }
+  .carousel-arrow.left{left:-6px;}
+  .carousel-arrow.right{right:-6px;}
+  @media(min-width:1200px){ .carousel-arrow{display:none;} }
+
+  /* ==================== SOBRE ==================== */
+  .sobre-wrap{max-width:760px; margin:0 auto; display:grid; grid-template-columns:180px 1fr; gap:40px; align-items:start;}
+  .sobre-icon{width:180px; height:180px; border-radius:20px; background:var(--sage); display:flex; align-items:center; justify-content:center; border:1px solid var(--plum);}
+  .sobre-wrap h2{font-size:1.75rem; margin-bottom:14px; font-weight:600;}
+  .sobre-wrap p{line-height:1.7; color:#4a3e46; margin:0 0 14px;}
+  @media(max-width:700px){.sobre-wrap{grid-template-columns:1fr;} .sobre-icon{margin:0 auto;}}
+
+  /* ==================== CONTATO ==================== */
+  .contato-wrap{max-width:520px; margin:0 auto; text-align:center;}
+  .form-row{display:flex; gap:10px; margin-top:28px; flex-wrap:wrap; justify-content:center;}
+  input[type=email]{flex:1; min-width:220px; padding:13px 18px; border-radius:999px; border:1px solid var(--plum); font-family:'Instrument Sans', sans-serif; font-size:0.92rem;}
+  .socials{margin-top:34px; display:flex; gap:16px; justify-content:center; font-size:0.88rem;}
+  .socials a{border-bottom:1px solid var(--plum);}
+
+  footer{padding:24px 5vw; text-align:center; font-size:0.78rem; color:#8a7c83; border-top:1px solid var(--line);}
+</style>
+</head>
+<body>
+
+  <header class="topbar">
+    <div class="logo">ensaio.</div>
+    <nav class="navlinks" id="tabs">
+      <button class="nav-link active" data-target="home">Home</button>
+      <button class="nav-link" data-target="wellness">Wellness</button>
+      <button class="nav-link" data-target="beauty">Beauty</button>
+      <button class="nav-link" data-target="cultura">Cultura</button>
+      <button class="nav-link" data-target="sobre">Sobre</button>
+      <button class="nav-link" data-target="contato">Contato</button>
+    </nav>
+    <div class="nav-right">
+      <button class="cta-pill" onclick="goTo('contato')"><span class="dot"></span> Assinar</button>
+    </div>
+  </header>
+
+  <!-- HOME -->
+  <section id="home" class="active">
+
+    <div class="hero">
+      <div class="hero-inner">
+        <svg class="sticker-mark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 2v20M2 12h20M5 5l14 14M19 5L5 19"/></svg>
+        <svg class="sticker-bubble" width="46" height="34" viewBox="0 0 46 34" fill="none" stroke="#241b28" stroke-width="1.4"><path d="M4 4h38v18H16l-6 8v-8H4V4z"/><circle cx="16" cy="13" r="1.4" fill="#241b28"/><circle cx="23" cy="13" r="1.4" fill="#241b28"/><circle cx="30" cy="13" r="1.4" fill="#241b28"/></svg>
+        <div class="sticker-dot">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fffdfa" stroke-width="1.8"><path d="M12 2l2.4 7.4H22l-6 4.4 2.3 7.4L12 16.8 5.7 21.2 8 13.8 2 9.4h7.6z"/></svg>
+        </div>
+
+        <span class="float-badge">onde beleza, bem-estar e cultura se encontram</span>
+
+        <h1>
+          <span class="line1">edição semanal</span>
+          <span class="line2">wellness &amp; beauty</span>
+          <span class="line3">e cultura.</span>
+        </h1>
+
+        <div class="hero-cta">
+          <button class="btn" onclick="goTo('wellness')"><span class="dot"></span> Ler a edição atual</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="marquee">
+      <div class="marquee-track">
+        <span>PELE, ROTINA E REPERTÓRIO</span><span>—</span><span>PELE, ROTINA E REPERTÓRIO</span><span>—</span><span>PELE, ROTINA E REPERTÓRIO</span><span>—</span>
+        <span>PELE, ROTINA E REPERTÓRIO</span><span>—</span><span>PELE, ROTINA E REPERTÓRIO</span><span>—</span><span>PELE, ROTINA E REPERTÓRIO</span><span>—</span>
+      </div>
+    </div>
+
+    <div class="kicker-section">
+      <div class="kicker-label">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="var(--mustard)"><path d="M13 2L4 14h6l-1 8 9-12h-6l1-8z"/></svg>
+        Bem-vindo ao ensaio
+      </div>
+      <h2>Para quem cuida da pele, da rotina e do que consome sem depender de fórmula pronta.</h2>
+      <p>Uma publicação universitária dividida em três editorias — cada uma com pesquisa, testes de produto e curadoria próprias.</p>
+    </div>
+
+    <div class="strip-wrap">
+      <div class="strip">
+        <div class="strip-item strip-photo" style="background:var(--cream);">
+          <svg width="54" height="54" viewBox="0 0 24 24" fill="none" stroke="#241b28" stroke-width="1.3"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="12" cy="12" r="3.2"/><path d="M8 5l1.5-2h5L16 5"/></svg>
+        </div>
+        <div class="strip-item strip-card" style="background:var(--blush);">
+          <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#241b28" stroke-width="1.6"><path d="M12 21c-4-2-7-6-7-10a7 7 0 0 1 14 0c0 4-3 8-7 10z"/></svg>
+          <h3>Wellness</h3>
+          <p>Sono, alimentação e rotina — pauta produzida com apoio de especialistas convidados.</p>
+          <button class="btn outline" onclick="goTo('wellness')">Ver seção</button>
+        </div>
+        <div class="strip-item strip-card" style="background:var(--teal);">
+          <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#241b28" stroke-width="1.6"><path d="M12 2c3 4 6 7.5 6 11a6 6 0 0 1-12 0c0-3.5 3-7 6-11z"/></svg>
+          <h3>Beauty</h3>
+          <p>Testes de produto conduzidos pela redação e comparativos por tipo de pele.</p>
+          <button class="btn outline" onclick="goTo('beauty')">Ver seção</button>
+        </div>
+        <div class="strip-item strip-card" style="background:var(--sage); color:var(--paper);">
+          <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#fffdfa" stroke-width="1.6"><path d="M4 5c3-1.5 6-1.5 8 0v14c-2-1.5-5-1.5-8 0V5z"/><path d="M20 5c-3-1.5-6-1.5-8 0v14c2-1.5 5-1.5 8 0V5z"/></svg>
+          <h3>Cultura</h3>
+          <p>Livros, filmes e exposições selecionados mensalmente pela editoria de cultura.</p>
+          <button class="btn outline" style="border-color:#fffdfa; color:#fffdfa;" onclick="goTo('cultura')">Ver seção</button>
+        </div>
+        <div class="strip-item strip-photo" style="background:var(--mustard);">
+          <svg width="54" height="54" viewBox="0 0 24 24" fill="none" stroke="#241b28" stroke-width="1.3"><path d="M4 19V9l8-6 8 6v10"/><path d="M9 19v-6h6v6"/></svg>
+        </div>
+      </div>
+      <span class="strip-tag">seção favorita dos leitores</span>
+      <div class="strip-arrow">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#241b28" stroke-width="2"><path d="M9 6l6 6-6 6"/></svg>
+      </div>
+    </div>
+
+    <div class="section-pad">
+      <div class="kicker-section" style="padding-top:0;">
+        <p class="kicker-label" style="justify-content:center; margin-bottom:14px;">últimos posts</p>
+        <h2 style="font-size:clamp(1.6rem,3.6vw,2.1rem);">Comece por aqui</h2>
+      </div>
+      <div class="grid-articles" style="margin-top:36px;">
+        <div class="card">
+          <div class="card-media" style="background:var(--blush)"><svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#241b28" stroke-width="1.4"><path d="M12 21c-4-2-7-6-7-10a7 7 0 0 1 14 0c0 4-3 8-7 10z"/></svg></div>
+          <div class="card-body">
+            <span class="card-cat">Wellness</span>
+            <h3>O que muda na rotina ao acordar 40 minutos mais tarde</h3>
+            <p>Um mês de acompanhamento questiona a máxima de "acordar cedo para render mais".</p>
+            <a class="read-more" href="#">Ler artigo →</a>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-media" style="background:var(--teal)"><svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#241b28" stroke-width="1.4"><path d="M12 2c3 4 6 7.5 6 11a6 6 0 0 1-12 0c0-3.5 3-7 6-11z"/></svg></div>
+          <div class="card-body">
+            <span class="card-cat">Beauty</span>
+            <h3>Três produtos que sobram quando a rotina é reduzida pela metade</h3>
+            <p>Um teste de dois meses sem compras novas aponta o que faz diferença de verdade.</p>
+            <a class="read-more" href="#">Ler artigo →</a>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-media" style="background:var(--mustard)"><svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#241b28" stroke-width="1.4"><path d="M4 5c3-1.5 6-1.5 8 0v14c-2-1.5-5-1.5-8 0V5z"/><path d="M20 5c-3-1.5-6-1.5-8 0v14c2-1.5 5-1.5 8 0V5z"/></svg></div>
+          <div class="card-body">
+            <span class="card-cat">Cultura</span>
+            <h3>O documentário que reacendeu a discussão sobre tempo de tela</h3>
+            <p>Uma produção recente coloca em pauta o consumo de conteúdo no dia a dia.</p>
+            <a class="read-more" href="#">Ler artigo →</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="membership">
+      <div class="membership-copy">
+        <svg class="sparkle" width="30" height="30" viewBox="0 0 24 24" fill="var(--mustard)"><path d="M13 2L4 14h6l-1 8 9-12h-6l1-8z"/></svg>
+        <p class="membership-label">Assinatura</p>
+        <h2>Isso é onde a curiosidade solta vira hábito de leitura.</h2>
+        <p>Um espaço para acompanhar wellness, beauty e cultura sem comparação de antes e depois nem promessa de fórmula mágica — só edição após edição.</p>
+        <p class="membership-note">Cansado de garimpar dica solta em feed?</p>
+        <button class="btn coral" onclick="goTo('contato')">Assinar a newsletter — a cada 15 dias</button>
+      </div>
+      <div class="membership-visual">
+        <div class="circle c1"></div>
+        <div class="circle c2"></div>
+        <svg width="70" height="70" viewBox="0 0 24 24" fill="none" stroke="#fffdfa" stroke-width="1.3"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg>
+      </div>
+    </div>
+
+    <div class="members-band">
+      <h2>Conheça a equipe</h2>
+      <div class="member-row-wrap">
+        <div class="member-row" id="memberRow">
+          <div class="member">
+            <div class="member-avatar" style="background:var(--blush)"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#241b28" stroke-width="1.6"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-6 8-6s8 2 8 6"/></svg></div>
+            <h4>Nome Sobrenome</h4>
+            <p>Editora-chefe</p>
+          </div>
+          <div class="member">
+            <div class="member-avatar" style="background:var(--sage)"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#fffdfa" stroke-width="1.6"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-6 8-6s8 2 8 6"/></svg></div>
+            <h4>Nome Sobrenome</h4>
+            <p>Editora de Wellness</p>
+          </div>
+          <div class="member">
+            <div class="member-avatar" style="background:var(--mustard)"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#241b28" stroke-width="1.6"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-6 8-6s8 2 8 6"/></svg></div>
+            <h4>Nome Sobrenome</h4>
+            <p>Editora de Beauty</p>
+          </div>
+          <div class="member">
+            <div class="member-avatar" style="background:var(--teal)"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#241b28" stroke-width="1.6"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-6 8-6s8 2 8 6"/></svg></div>
+            <h4>Nome Sobrenome</h4>
+            <p>Editor de Cultura</p>
+          </div>
+          <div class="member">
+            <div class="member-avatar" style="background:var(--blush-deep)"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#241b28" stroke-width="1.6"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-6 8-6s8 2 8 6"/></svg></div>
+            <h4>Nome Sobrenome</h4>
+            <p>Redação</p>
+          </div>
+          <div class="member">
+            <div class="member-avatar" style="background:var(--sage-deep)"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#fffdfa" stroke-width="1.6"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-6 8-6s8 2 8 6"/></svg></div>
+            <h4>Nome Sobrenome</h4>
+            <p>Design e Diagramação</p>
+          </div>
+        </div>
+        <div class="carousel-arrow left" onclick="document.getElementById('memberRow').scrollBy({left:-200,behavior:'smooth'})">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#241b28" stroke-width="2"><path d="M15 6l-6 6 6 6"/></svg>
+        </div>
+        <div class="carousel-arrow right" onclick="document.getElementById('memberRow').scrollBy({left:200,behavior:'smooth'})">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#241b28" stroke-width="2"><path d="M9 6l6 6-6 6"/></svg>
+        </div>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- WELLNESS -->
+  <section id="wellness">
+    <div class="mini-hero">
+      <p class="tag">seção</p>
+      <h2>Wellness</h2>
+    </div>
+    <div class="section-pad">
+      <div class="grid-articles">
+        <div class="card">
+          <div class="card-media" style="background:var(--blush)"><svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#241b28" stroke-width="1.4"><path d="M12 21c-4-2-7-6-7-10a7 7 0 0 1 14 0c0 4-3 8-7 10z"/></svg></div>
+          <div class="card-body">
+            <span class="card-cat">Wellness</span>
+            <h3>O que muda ao acordar 40 minutos mais tarde</h3>
+            <p>Um acompanhamento de um mês questiona a máxima de "acordar cedo para render mais".</p>
+            <a class="read-more" href="#">Ler artigo →</a>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-media" style="background:var(--sage)"><svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#fffdfa" stroke-width="1.4"><path d="M12 21c-4-2-7-6-7-10a7 7 0 0 1 14 0c0 4-3 8-7 10z"/></svg></div>
+          <div class="card-body">
+            <span class="card-cat">Wellness</span>
+            <h3>Uma técnica de respiração para antes de reuniões difíceis</h3>
+            <p>Quatro minutos, sem aplicativo, indicados por especialistas em regulação do estresse.</p>
+            <a class="read-more" href="#">Ler artigo →</a>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-media" style="background:var(--mustard)"><svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#241b28" stroke-width="1.4"><path d="M12 21c-4-2-7-6-7-10a7 7 0 0 1 14 0c0 4-3 8-7 10z"/></svg></div>
+          <div class="card-body">
+            <span class="card-cat">Wellness</span>
+            <h3>Duas semanas trocando café por chá à tarde</h3>
+            <p>O relato aponta o que muda além da cafeína quando o hábito é substituído.</p>
+            <a class="read-more" href="#">Ler artigo →</a>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-media" style="background:var(--blush-deep)"><svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#241b28" stroke-width="1.4"><path d="M12 21c-4-2-7-6-7-10a7 7 0 0 1 14 0c0 4-3 8-7 10z"/></svg></div>
+          <div class="card-body">
+            <span class="card-cat">Wellness</span>
+            <h3>Por que o sono ruim raramente é culpa do colchão</h3>
+            <p>Hábitos das duas horas antes de dormir explicam boa parte das noites mal dormidas.</p>
+            <a class="read-more" href="#">Ler artigo →</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BEAUTY -->
+  <section id="beauty">
+    <div class="mini-hero">
+      <p class="tag">seção</p>
+      <h2>Beauty</h2>
+    </div>
+    <div class="section-pad">
+      <div class="grid-articles">
+        <div class="card">
+          <div class="card-media" style="background:var(--teal)"><svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#241b28" stroke-width="1.4"><path d="M12 2c3 4 6 7.5 6 11a6 6 0 0 1-12 0c0-3.5 3-7 6-11z"/></svg></div>
+          <div class="card-body">
+            <span class="card-cat">Beauty</span>
+            <h3>Três produtos que sobram quando a rotina é cortada pela metade</h3>
+            <p>Um teste de dois meses sem compras novas aponta o que faz diferença de verdade.</p>
+            <a class="read-more" href="#">Ler artigo →</a>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-media" style="background:var(--blush)"><svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#241b28" stroke-width="1.4"><path d="M12 2c3 4 6 7.5 6 11a6 6 0 0 1-12 0c0-3.5 3-7 6-11z"/></svg></div>
+          <div class="card-body">
+            <span class="card-cat">Beauty</span>
+            <h3>Base ou hidratante: o passo que costuma ser ignorado antes da compra</h3>
+            <p>Entender o tipo de pele evita gasto com produto errado.</p>
+            <a class="read-more" href="#">Ler artigo →</a>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-media" style="background:var(--blush-deep)"><svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#241b28" stroke-width="1.4"><path d="M12 2c3 4 6 7.5 6 11a6 6 0 0 1-12 0c0-3.5 3-7 6-11z"/></svg></div>
+          <div class="card-body">
+            <span class="card-cat">Beauty</span>
+            <h3>O que profissionais de manicure raramente explicam sobre unha fraca</h3>
+            <p>Três hábitos com mais efeito do que qualquer fortalecedor.</p>
+            <a class="read-more" href="#">Ler artigo →</a>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-media" style="background:var(--mustard)"><svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#241b28" stroke-width="1.4"><path d="M12 2c3 4 6 7.5 6 11a6 6 0 0 1-12 0c0-3.5 3-7 6-11z"/></svg></div>
+          <div class="card-body">
+            <span class="card-cat">Beauty</span>
+            <h3>O item que dermatologistas repetem em quase toda recomendação</h3>
+            <p>Não é o mais caro do nécessaire — e é o que mais pesa a longo prazo.</p>
+            <a class="read-more" href="#">Ler artigo →</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CULTURA -->
+  <section id="cultura">
+    <div class="mini-hero">
+      <p class="tag">seção</p>
+      <h2>Cultura</h2>
+    </div>
+    <div class="section-pad">
+      <div class="grid-articles">
+        <div class="card">
+          <div class="card-media" style="background:var(--mustard)"><svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#241b28" stroke-width="1.4"><path d="M4 5c3-1.5 6-1.5 8 0v14c-2-1.5-5-1.5-8 0V5z"/><path d="M20 5c-3-1.5-6-1.5-8 0v14c2-1.5 5-1.5 8 0V5z"/></svg></div>
+          <div class="card-body">
+            <span class="card-cat">Cultura</span>
+            <h3>O documentário que reacendeu a discussão sobre tempo de tela</h3>
+            <p>Uma produção recente coloca em pauta o consumo de conteúdo no dia a dia.</p>
+            <a class="read-more" href="#">Ler artigo →</a>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-media" style="background:var(--sage)"><svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#fffdfa" stroke-width="1.4"><path d="M4 5c3-1.5 6-1.5 8 0v14c-2-1.5-5-1.5-8 0V5z"/><path d="M20 5c-3-1.5-6-1.5-8 0v14c2-1.5 5-1.5 8 0V5z"/></svg></div>
+          <div class="card-body">
+            <span class="card-cat">Cultura</span>
+            <h3>Três livros curtos para quem só lê no trajeto de ônibus</h3>
+            <p>Nenhum passa de 160 páginas — e nenhum é autoajuda.</p>
+            <a class="read-more" href="#">Ler artigo →</a>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-media" style="background:var(--blush)"><svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#241b28" stroke-width="1.4"><path d="M4 5c3-1.5 6-1.5 8 0v14c-2-1.5-5-1.5-8 0V5z"/><path d="M20 5c-3-1.5-6-1.5-8 0v14c2-1.5 5-1.5 8 0V5z"/></svg></div>
+          <div class="card-body">
+            <span class="card-cat">Cultura</span>
+            <h3>A exposição que segue repercutindo semanas após o fim</h3>
+            <p>Uma mostra pequena, pouco divulgada, que superou a expectativa do público.</p>
+            <a class="read-more" href="#">Ler artigo →</a>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-media" style="background:var(--blush-deep)"><svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#241b28" stroke-width="1.4"><path d="M4 5c3-1.5 6-1.5 8 0v14c-2-1.5-5-1.5-8 0V5z"/><path d="M20 5c-3-1.5-6-1.5-8 0v14c2-1.5 5-1.5 8 0V5z"/></svg></div>
+          <div class="card-body">
+            <span class="card-cat">Cultura</span>
+            <h3>A playlist que acompanha a produção de cada edição</h3>
+            <p>Uma seleção que passou a fazer parte do processo editorial, não só do fundo musical.</p>
+            <a class="read-more" href="#">Ler artigo →</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SOBRE -->
+  <section id="sobre">
+    <div class="mini-hero">
+      <p class="tag">a publicação</p>
+      <h2>Sobre</h2>
+    </div>
+    <div class="section-pad">
+      <div class="sobre-wrap">
+        <div class="sobre-icon">
+          <svg width="70" height="70" viewBox="0 0 24 24" fill="none" stroke="#fffdfa" stroke-width="1.4"><path d="M4 4h13a3 3 0 0 1 3 3v13H7a3 3 0 0 1-3-3V4z"/><path d="M20 20a3 3 0 0 1-3-3" /><line x1="7" y1="8" x2="16" y2="8"/><line x1="7" y1="12" x2="16" y2="12"/></svg>
+        </div>
+        <div>
+          <h2>Ensaio é um projeto editorial dedicado a wellness, beauty e cultura.</h2>
+          <p>A publicação nasceu como projeto da disciplina de Webwriting, criado por uma equipe interessada em cobrir bem-estar, beleza e cultura sem depender de fórmulas prontas ou promessas de transformação instantânea.</p>
+          <p>Cada seção é conduzida por uma editoria própria, responsável por pesquisa, testes de produto e curadoria de conteúdo cultural. Recomendações e parcerias seguem critérios editoriais informados ao leitor.</p>
+          <button class="btn" style="margin-top:10px;" onclick="goTo('contato')">Falar com a redação</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTATO -->
+  <section id="contato">
+    <div class="mini-hero">
+      <p class="tag">fale com a redação</p>
+      <h2>Contato</h2>
+    </div>
+    <div class="section-pad">
+      <div class="contato-wrap">
+        <p style="color:#5c4f57;">Sugestões de pauta, dúvidas ou parcerias — a redação responde por e-mail ou pelas redes da publicação.</p>
+        <form class="form-row" onsubmit="event.preventDefault(); alert('Protótipo — sem envio real ainda.');">
+          <input type="email" placeholder="seu e-mail" required>
+          <button type="submit" class="btn coral">Assinar</button>
+        </form>
+        <div class="socials">
+          <a href="#">Instagram</a>
+          <a href="#">Pinterest</a>
+          <a href="#">redacao@ensaio.com</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>ensaio. — projeto de webwriting, protótipo de blog © 2026</footer>
+
+  <script>
+    function goTo(id){
+      document.querySelectorAll('section').forEach(s => s.classList.remove('active'));
+      document.getElementById(id).classList.add('active');
+      document.querySelectorAll('.nav-link').forEach(b => b.classList.remove('active'));
+      document.querySelector('.nav-link[data-target="'+id+'"]').classList.add('active');
+      window.scrollTo({top:0, behavior:'smooth'});
+    }
+    document.querySelectorAll('.nav-link').forEach(btn=>{
+      btn.addEventListener('click', ()=> goTo(btn.dataset.target));
+    });
+  </script>
+
+</body>
+</html>
