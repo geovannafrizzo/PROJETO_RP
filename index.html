@@ -1,6 +1,14 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-tq4j7x3jj3"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-tq4j7x3jj3');
+</script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="absolute — edição semanal de wellness, beauty e cultura. Projeto de webwriting.">
@@ -1000,9 +1008,24 @@
       current.classList.add('active');
       current.scrollIntoView({inline:'center', block:'nearest', behavior: reduceMotion ? 'auto' : 'smooth'});
       window.scrollTo({top:0, behavior: reduceMotion ? 'auto' : 'smooth'});
+
+      // Google Analytics: registra cada troca de seção como uma visualização de página
+      if (window.gtag) {
+        gtag('event', 'page_view', {
+          page_title: id,
+          page_location: location.origin + location.pathname + '#' + id
+        });
+      }
     }
     document.querySelectorAll('.nav-link').forEach(function(btn){
       btn.addEventListener('click', function(){ goTo(btn.dataset.target); });
+    });
+
+    // Google Analytics: registra quando alguém dá play no vídeo do artigo
+    document.querySelectorAll('video').forEach(function(v){
+      v.addEventListener('play', function(){
+        if (window.gtag) gtag('event', 'video_play', {video_title: 'estetica'});
+      });
     });
   </script>
 
