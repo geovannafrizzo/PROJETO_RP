@@ -377,6 +377,14 @@
     .feature-body{padding:26px 22px;}
   }
 
+  /* destaque alternativo (artigo de esporte): teal, vídeo à direita */
+  .feature.alt{background:var(--teal); grid-template-columns:1fr minmax(220px,300px);}
+  .feature.alt .feature-media{order:2;}
+  @media(max-width:700px){
+    .feature.alt{grid-template-columns:1fr;}
+    .feature.alt .feature-media{order:0;}
+  }
+
   /* ==================== PÁGINA DO ARTIGO ==================== */
   .artigo-head{
     padding:50px 5vw 40px;
@@ -392,6 +400,22 @@
   .artigo-meta{margin-top:22px; font-size:0.82rem; display:flex; gap:14px; justify-content:center; flex-wrap:wrap;}
   .artigo-meta span{background:var(--paper); border:1px solid var(--plum); border-radius:999px; padding:5px 14px;}
 
+  /* cabeçalho do artigo de esporte: teal + faixa quadriculada de bandeirada */
+  .artigo-head.esporte{
+    position:relative;
+    background-color:var(--teal);
+    padding-bottom:70px;
+  }
+  .artigo-head.esporte::after{
+    content:"";
+    position:absolute; left:0; right:0; bottom:0; height:28px;
+    background-color:var(--paper);
+    background-image:conic-gradient(var(--plum) 25%, transparent 0 50%, var(--plum) 0 75%, transparent 0);
+    background-size:28px 28px;
+    border-top:1px solid var(--plum);
+  }
+  .artigo-head.esporte h2 em{color:var(--coral-deep);}
+
   .artigo-wrap{
     max-width:1060px; margin:0 auto; padding:56px 5vw 40px;
     display:grid; grid-template-columns:minmax(0,1fr) 320px; gap:56px; align-items:start;
@@ -401,6 +425,10 @@
   .artigo-texto p.pergunta{
     font-family:'Fraunces', serif; font-style:italic; font-size:1.35rem; line-height:1.4; color:var(--coral-deep);
     border-left:3px solid var(--mustard); padding:4px 0 4px 20px; margin:32px 0;
+  }
+  .artigo-texto p.fechamento{
+    background:var(--cream); border:1px solid var(--plum); border-radius:16px;
+    padding:20px 24px; font-size:1rem; margin-top:32px;
   }
   .artigo-texto .tags{display:flex; flex-wrap:wrap; gap:8px; margin:30px 0 0;}
   .artigo-texto .tags span{border:1px solid var(--plum); border-radius:999px; padding:5px 14px; font-size:0.78rem;}
@@ -613,7 +641,21 @@
       </div>
       <div class="grid-articles" style="margin-top:36px;">
 
-        <!-- NOVO ARTIGO EM DESTAQUE -->
+        <!-- NOVO ARTIGO EM DESTAQUE: ESPORTE E LIFESTYLE -->
+        <article class="feature alt">
+          <div class="feature-media">
+            <img src="poster-esporte.jpg" alt="Cena do vídeo do artigo sobre esporte e lifestyle" loading="lazy">
+            <span class="play-chip" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="#241b28"><path d="M8 5v14l11-7z"/></svg></span>
+          </div>
+          <div class="feature-body">
+            <div class="eyebrow"><span class="badge-new">Novo artigo</span> Cultura</div>
+            <h3>Quando o esporte deixa de ser só esporte</h3>
+            <p>Futebol, Fórmula 1 e lifestyle: como a paixão esportiva influencia nosso estilo, nossas relações e a identidade que construímos.</p>
+            <button class="btn" onclick="goTo('artigo-esporte')">Ler e assistir →</button>
+          </div>
+        </article>
+
+        <!-- ARTIGO EM DESTAQUE: ESTÉTICA -->
         <article class="feature">
           <div class="feature-media">
             <img src="poster-estetica.jpg" alt="Cena do vídeo do artigo sobre estéticas" loading="lazy">
@@ -824,7 +866,22 @@
     <div class="section-pad">
       <div class="grid-articles">
 
-        <!-- NOVO ARTIGO -->
+        <!-- NOVO ARTIGO: ESPORTE E LIFESTYLE -->
+        <div class="card">
+          <div class="card-media has-img">
+            <img src="poster-esporte.jpg" alt="Cena do vídeo do artigo sobre esporte e lifestyle" loading="lazy">
+            <span class="badge-new">Novo</span>
+            <span class="play-chip" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="#241b28"><path d="M8 5v14l11-7z"/></svg></span>
+          </div>
+          <div class="card-body">
+            <span class="card-cat">Cultura · texto + vídeo</span>
+            <h3>Quando o esporte deixa de ser só esporte</h3>
+            <p>Do estádio ao autódromo: como futebol e Fórmula 1 viram identidade e estilo de vida.</p>
+            <a class="read-more" href="#artigo-esporte" onclick="goTo('artigo-esporte'); return false;">Ler artigo →</a>
+          </div>
+        </div>
+
+        <!-- ARTIGO: ESTÉTICA -->
         <div class="card">
           <div class="card-media has-img">
             <img src="poster-estetica.jpg" alt="Cena do vídeo do artigo sobre estéticas" loading="lazy">
@@ -918,8 +975,72 @@
 
       <aside class="artigo-video" aria-label="Vídeo do artigo">
         <div class="phone">
-          <video controls playsinline preload="metadata" poster="poster-estetica.jpg">
+          <video controls playsinline preload="metadata" poster="poster-estetica.jpg" data-title="estetica">
             <source src="video-estetica.mp4" type="video/mp4">
+            Seu navegador não suporta a reprodução de vídeo.
+          </video>
+        </div>
+        <p class="video-legenda">Assista ao vídeo que acompanha o texto.</p>
+      </aside>
+    </div>
+
+    <div class="artigo-next">
+      <div class="artigo-next-box">
+        <div>
+          <h3>Quer continuar lendo?</h3>
+          <p>Veja os outros textos da editoria de Cultura ou assine para receber os próximos blogs e vídeos da série.</p>
+        </div>
+        <div style="display:flex; gap:10px; flex-wrap:wrap;">
+          <button class="btn outline" onclick="goTo('cultura')">Mais de Cultura</button>
+          <button class="btn coral" onclick="goTo('contato')">Assinar</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ARTIGO: QUANDO O ESPORTE DEIXA DE SER SÓ ESPORTE -->
+  <section id="artigo-esporte">
+    <header class="artigo-head esporte">
+      <div class="crumbs">
+        <button type="button" onclick="goTo('cultura')">← Cultura</button>
+        <span aria-hidden="true">/</span>
+        <span>texto + vídeo</span>
+      </div>
+      <h2>Quando o esporte deixa de ser só esporte: futebol, Fórmula 1 e <em>lifestyle</em></h2>
+      <div class="artigo-meta">
+        <span>Cultura</span>
+        <span>leitura de 3 min</span>
+        <span>vídeo de 2 min</span>
+      </div>
+    </header>
+
+    <div class="artigo-wrap">
+      <div class="artigo-texto">
+        <p class="lead">Dos estádios aos autódromos, das camisas de time aos bonés de equipes: como a paixão esportiva influencia nosso estilo, nossas relações e a maneira como construímos nossa identidade.</p>
+        <p>Gostar de um esporte pode significar muito mais do que acompanhar resultados, torcer durante uma partida ou assistir a uma corrida no domingo. Para muitas pessoas, essa paixão ultrapassa as telas e passa a fazer parte de diferentes aspectos da vida: das roupas que escolhem vestir aos lugares que frequentam, das amizades que constroem até a maneira como desejam ser reconhecidas.</p>
+        <p>O futebol e a Fórmula 1 são dois exemplos interessantes de como o esporte pode se transformar em um verdadeiro lifestyle. Embora tenham características e formas de consumo diferentes, os dois universos compartilham algo em comum: a capacidade de criar identidades e conectar pessoas por meio de interesses, símbolos e experiências.</p>
+        <p>No futebol, essa relação costuma começar muito cedo. A escolha de um time nem sempre acontece de maneira consciente. Muitas vezes, ela é uma herança familiar, passada de geração em geração. Crescer acompanhando os jogos dos pais, frequentar estádios desde criança ou simplesmente conviver com pessoas que compartilham a mesma torcida são experiências que ajudam a construir essa identificação.</p>
+        <p>Com o tempo, torcer por um clube deixa de ser apenas uma preferência esportiva. Está presente nos cantos da torcida, nas conversas entre amigos, nos memes compartilhados nas redes sociais e até nas roupas escolhidas para o dia a dia. As camisas de futebol, por exemplo, conquistaram espaço na moda urbana e passaram a aparecer em combinações que vão muito além dos dias de jogo.</p>
+        <p>Já na Fórmula 1, o envolvimento pode acontecer por diferentes caminhos. Algumas pessoas se interessam inicialmente pela velocidade, pela tecnologia e pela competitividade das corridas. Outras chegam por meio das histórias dos pilotos, das rivalidades entre equipes, dos bastidores ou até da estética que envolve esse universo.</p>
+        <p>E quem acompanha a categoria sabe que o fim de semana de Grande Prêmio pode se transformar em uma experiência completa. Escolher um look inspirado na equipe favorita, usar as cores de um piloto, acompanhar os conteúdos publicados nas redes sociais e conhecer os bastidores fazem parte da experiência de ser fã. Para alguns, a paixão chega até a influenciar planos de viagem, com o desejo de conhecer os circuitos e assistir a uma corrida presencialmente.</p>
+        <p class="pergunta">Mas o que faz uma pessoa se identificar tanto com esses universos?</p>
+        <p>Uma parte importante dessa resposta está no sentimento de pertencimento. Quando usamos uma camisa de determinado clube ou um boné de uma equipe da Fórmula 1, não estamos necessariamente escolhendo apenas um acessório. Muitas vezes, estamos demonstrando uma preferência, compartilhando uma história ou sinalizando que fazemos parte de uma comunidade.</p>
+        <p>É interessante perceber como esses símbolos ultrapassam o significado original. Uma camisa pode representar lembranças de infância, momentos vividos com a família ou uma conexão afetiva com determinada cidade. Da mesma forma, uma peça de uma equipe de Fórmula 1 pode representar a admiração por um piloto, uma temporada marcante ou até a identificação com a imagem que aquela equipe transmite.</p>
+        <p>As redes sociais também têm um papel importante nessa construção. Hoje, acompanhar um esporte não significa apenas assistir às competições. É possível participar de discussões, acompanhar criadores de conteúdo, compartilhar memes, conhecer novas histórias e descobrir comunidades inteiras que se formam em torno de uma mesma paixão.</p>
+        <p>Com isso, o esporte passa a ocupar um espaço na cultura e no comportamento das pessoas. Ele influencia tendências de moda, expressões, hábitos de consumo e até a forma como nos apresentamos no ambiente digital.</p>
+        <p>E talvez seja justamente aí que futebol e Fórmula 1 se encontrem: os dois mostram que nossas preferências podem dizer muito sobre quem somos e sobre os grupos com os quais escolhemos nos conectar.</p>
+        <p>No fim, não se trata de decidir qual esporte tem o lifestyle mais interessante, mas de entender por que sentimos vontade de incorporar determinadas referências à nossa vida.</p>
+        <p class="pergunta">Afinal, será que escolhemos essas referências porque elas já representam quem somos ou será que elas também influenciam a pessoa que estamos nos tornando?</p>
+        <p class="fechamento">E você, já percebeu como o futebol ou a Fórmula 1 fazem parte do seu lifestyle? Talvez aquela camisa no armário ou o boné da sua equipe favorita contem uma história muito maior do que você imagina.</p>
+        <div class="tags" aria-label="Temas do artigo">
+          <span>esporte</span><span>futebol</span><span>Fórmula 1</span><span>lifestyle</span><span>identidade</span>
+        </div>
+      </div>
+
+      <aside class="artigo-video" aria-label="Vídeo do artigo">
+        <div class="phone">
+          <video controls playsinline preload="metadata" poster="poster-esporte.jpg" data-title="esporte">
+            <source src="video-esporte.mp4" type="video/mp4">
             Seu navegador não suporta a reprodução de vídeo.
           </video>
         </div>
@@ -996,7 +1117,7 @@
     var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
     // páginas de artigo ficam "dentro" de uma aba do menu
-    var navParent = { 'artigo-estetica': 'cultura' };
+    var navParent = { 'artigo-estetica': 'cultura', 'artigo-esporte': 'cultura' };
 
     function goTo(id){
       // pausa qualquer vídeo ao sair do artigo
@@ -1024,7 +1145,7 @@
     // Google Analytics: registra quando alguém dá play no vídeo do artigo
     document.querySelectorAll('video').forEach(function(v){
       v.addEventListener('play', function(){
-        if (window.gtag) gtag('event', 'video_play', {video_title: 'estetica'});
+        if (window.gtag) gtag('event', 'video_play', {video_title: v.dataset.title || 'estetica'});
       });
     });
   </script>
