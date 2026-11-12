@@ -3,10 +3,10 @@
 // 2) Suba este arquivo para o GitHub na mesma pasta do index.html.
 
 const firebaseConfig = {
-  apiKey: "COLE_AQUI",
-  authDomain: "COLE_AQUI",
-  projectId: "COLE_AQUI",
-  appId: "COLE_AQUI"
+  apiKey: "AIzaSyDO74hecdJysaw8r2L_X9z5MKJflqAMBio",
+  authDomain: "absolute-blog.firebaseapp.com",
+  projectId: "absolute-blog",
+  appId: "1:885975516566:web:6c81de8ec872b7c69949b7"
 };
 
 // O Firebase é carregado à parte: se falhar, o bloco de curtir/comentar aparece do mesmo jeito.
