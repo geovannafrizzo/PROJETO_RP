@@ -218,58 +218,6 @@
   .kicker-section h2{font-size:clamp(1.7rem,4vw,2.5rem); font-weight:600; max-width:640px; margin:0 auto;}
   .kicker-section p{max-width:480px; margin:20px auto 0; color:#5c4f57; font-size:0.95rem; line-height:1.6;}
 
-  /* ==================== STRIP (photos + cards) ==================== */
-  .strip-wrap{position:relative; margin-top:50px; padding-bottom:70px;}
-  .strip{
-    display:flex;
-    justify-content:safe center;
-    gap:0;
-    overflow-x:auto;
-    scrollbar-width:none;
-    padding:0 5vw;
-  }
-  .strip::-webkit-scrollbar{display:none;}
-  .strip-item{
-    flex:0 0 240px;
-    min-height:300px;
-    border:1px solid var(--plum);
-    margin-right:-1px;
-    display:flex;
-    flex-direction:column;
-  }
-  .strip-photo{
-    background:var(--cream);
-    display:flex; align-items:center; justify-content:center;
-  }
-  .strip-card{padding:26px 22px; display:flex; flex-direction:column;}
-  .strip-card h3{font-size:1.05rem; margin-bottom:12px; font-weight:600;}
-  .strip-card p{font-size:0.85rem; line-height:1.5; margin:0 0 18px; flex:1;}
-  .strip-card .btn{align-self:flex-start; padding:9px 18px; font-size:0.78rem;}
-  .strip-tag{
-    position:absolute;
-    left:max(5vw, calc(50% - 598px));
-    bottom:16px;
-    background:var(--teal);
-    border:1px solid var(--plum);
-    padding:8px 16px;
-    border-radius:999px;
-    font-size:0.72rem;
-    text-transform:uppercase;
-    letter-spacing:.03em;
-  }
-  .strip-arrow{
-    position:absolute;
-    right:5vw; top:50%; transform:translateY(-50%);
-    width:44px; height:44px;
-    border-radius:50%;
-    background:var(--paper);
-    border:1px solid var(--plum);
-    display:flex; align-items:center; justify-content:center;
-    cursor:pointer;
-    padding:0;
-  }
-  @media(min-width:1340px){ .strip-arrow{display:none;} }
-
   /* ==================== MEMBERSHIP ==================== */
   .membership{
     max-width:1200px;
@@ -536,7 +484,6 @@
     .kicker-section{padding-top:48px;}
     .membership{padding:48px 5vw; gap:32px;}
     .section-pad{padding:40px 5vw 52px;}
-    .strip-arrow{width:38px; height:38px;}
   }
 
   .feature.rosa{background:var(--blush);}
@@ -562,9 +509,7 @@
     <div class="logo">absolute</div>
     <nav class="navlinks" id="tabs" aria-label="Navegação principal">
       <button class="nav-link active" data-target="home">Home</button>
-      <button class="nav-link" data-target="wellness">Wellness</button>
-      <button class="nav-link" data-target="beauty">Beauty</button>
-      <button class="nav-link" data-target="cultura">Cultura</button>
+      <button class="nav-link" data-target="artigos">Artigos</button>
       <button class="nav-link" data-target="sobre">Sobre</button>
       <button class="nav-link" data-target="contato">Contato</button>
     </nav>
@@ -593,7 +538,7 @@
         </h1>
 
         <div class="hero-cta">
-          <button class="btn" onclick="goTo('wellness')"><span class="dot"></span> Ler a edição atual</button>
+          <button class="btn" onclick="goTo('artigos')"><span class="dot"></span> Ler a edição atual</button>
         </div>
       </div>
     </div>
@@ -608,6 +553,7 @@
         Bem-vindo ao absolute
       </div>
       <h2>Para quem cuida da pele, da rotina e do que consome sem depender de fórmula pronta.</h2>
+      <p>Uma publicação universitária dividida em três editorias — cada uma com pesquisa, testes de produto e curadoria próprias.</p>
     </div>
 
     <div class="section-pad">
@@ -660,33 +606,6 @@
           </div>
         </article>
 
-        <div class="card">
-          <div class="card-media" style="background:var(--blush)"><svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#241b28" stroke-width="1.4" aria-hidden="true"><path d="M12 21c-4-2-7-6-7-10a7 7 0 0 1 14 0c0 4-3 8-7 10z"/></svg></div>
-          <div class="card-body">
-            <span class="card-cat">Wellness</span>
-            <h3>O que muda na rotina ao acordar 40 minutos mais tarde</h3>
-            <p>Um mês de acompanhamento questiona a máxima de "acordar cedo para render mais".</p>
-            <a class="read-more" href="#">Ler artigo →</a>
-          </div>
-        </div>
-        <div class="card">
-          <div class="card-media" style="background:var(--teal)"><svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#241b28" stroke-width="1.4" aria-hidden="true"><path d="M12 2c3 4 6 7.5 6 11a6 6 0 0 1-12 0c0-3.5 3-7 6-11z"/></svg></div>
-          <div class="card-body">
-            <span class="card-cat">Beauty</span>
-            <h3>Três produtos que sobram quando a rotina é reduzida pela metade</h3>
-            <p>Um teste de dois meses sem compras novas aponta o que faz diferença de verdade.</p>
-            <a class="read-more" href="#">Ler artigo →</a>
-          </div>
-        </div>
-        <div class="card">
-          <div class="card-media" style="background:var(--mustard)"><svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#241b28" stroke-width="1.4" aria-hidden="true"><path d="M4 5c3-1.5 6-1.5 8 0v14c-2-1.5-5-1.5-8 0V5z"/><path d="M20 5c-3-1.5-6-1.5-8 0v14c2-1.5 5-1.5 8 0V5z"/></svg></div>
-          <div class="card-body">
-            <span class="card-cat">Cultura</span>
-            <h3>O documentário que reacendeu a discussão sobre tempo de tela</h3>
-            <p>Uma produção recente coloca em pauta o consumo de conteúdo no dia a dia.</p>
-            <a class="read-more" href="#">Ler artigo →</a>
-          </div>
-        </div>
       </div>
     </div>
 
@@ -712,33 +631,33 @@
         <div class="member-row" id="memberRow">
           <div class="member">
             <div class="member-avatar" style="background:var(--blush)"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#241b28" stroke-width="1.6" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-6 8-6s8 2 8 6"/></svg></div>
-            <h4>Nome Sobrenome</h4>
-            <p>Editora-chefe</p>
+            <h4>Geovanna Frizzo</h4>
+            <p>Redação</p>
           </div>
           <div class="member">
             <div class="member-avatar" style="background:var(--sage)"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#fffdfa" stroke-width="1.6" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-6 8-6s8 2 8 6"/></svg></div>
-            <h4>Nome Sobrenome</h4>
-            <p>Editora de Wellness</p>
+            <h4>Stefany Dutra</h4>
+            <p>Redação</p>
           </div>
           <div class="member">
             <div class="member-avatar" style="background:var(--mustard)"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#241b28" stroke-width="1.6" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-6 8-6s8 2 8 6"/></svg></div>
-            <h4>Nome Sobrenome</h4>
-            <p>Editora de Beauty</p>
+            <h4>Beatriz Kobata</h4>
+            <p>Redação</p>
           </div>
           <div class="member">
             <div class="member-avatar" style="background:var(--teal)"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#241b28" stroke-width="1.6" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-6 8-6s8 2 8 6"/></svg></div>
-            <h4>Nome Sobrenome</h4>
-            <p>Editor de Cultura</p>
+            <h4>Ana Luisa Botelho</h4>
+            <p>Redação</p>
           </div>
           <div class="member">
             <div class="member-avatar" style="background:var(--blush-deep)"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#241b28" stroke-width="1.6" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-6 8-6s8 2 8 6"/></svg></div>
-            <h4>Nome Sobrenome</h4>
+            <h4>João Pedro Celestino</h4>
             <p>Redação</p>
           </div>
           <div class="member">
             <div class="member-avatar" style="background:var(--sage-deep)"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#fffdfa" stroke-width="1.6" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-6 8-6s8 2 8 6"/></svg></div>
-            <h4>Nome Sobrenome</h4>
-            <p>Design e Diagramação</p>
+            <h4>Valter Neto</h4>
+            <p>Redação</p>
           </div>
         </div>
         <button class="carousel-arrow left" aria-label="Anterior" onclick="document.getElementById('memberRow').scrollBy({left:-200,behavior:'smooth'})">
@@ -752,107 +671,11 @@
 
   </section>
 
-  <!-- WELLNESS -->
-  <section id="wellness">
+  <!-- ARTIGOS -->
+  <section id="artigos">
     <div class="mini-hero">
       <p class="tag">seção</p>
-      <h2>Wellness</h2>
-    </div>
-    <div class="section-pad">
-      <div class="grid-articles">
-        <div class="card">
-          <div class="card-media" style="background:var(--blush)"><svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#241b28" stroke-width="1.4" aria-hidden="true"><path d="M12 21c-4-2-7-6-7-10a7 7 0 0 1 14 0c0 4-3 8-7 10z"/></svg></div>
-          <div class="card-body">
-            <span class="card-cat">Wellness</span>
-            <h3>O que muda ao acordar 40 minutos mais tarde</h3>
-            <p>Um acompanhamento de um mês questiona a máxima de "acordar cedo para render mais".</p>
-            <a class="read-more" href="#">Ler artigo →</a>
-          </div>
-        </div>
-        <div class="card">
-          <div class="card-media" style="background:var(--sage)"><svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#fffdfa" stroke-width="1.4" aria-hidden="true"><path d="M12 21c-4-2-7-6-7-10a7 7 0 0 1 14 0c0 4-3 8-7 10z"/></svg></div>
-          <div class="card-body">
-            <span class="card-cat">Wellness</span>
-            <h3>Uma técnica de respiração para antes de reuniões difíceis</h3>
-            <p>Quatro minutos, sem aplicativo, indicados por especialistas em regulação do estresse.</p>
-            <a class="read-more" href="#">Ler artigo →</a>
-          </div>
-        </div>
-        <div class="card">
-          <div class="card-media" style="background:var(--mustard)"><svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#241b28" stroke-width="1.4" aria-hidden="true"><path d="M12 21c-4-2-7-6-7-10a7 7 0 0 1 14 0c0 4-3 8-7 10z"/></svg></div>
-          <div class="card-body">
-            <span class="card-cat">Wellness</span>
-            <h3>Duas semanas trocando café por chá à tarde</h3>
-            <p>O relato aponta o que muda além da cafeína quando o hábito é substituído.</p>
-            <a class="read-more" href="#">Ler artigo →</a>
-          </div>
-        </div>
-        <div class="card">
-          <div class="card-media" style="background:var(--blush-deep)"><svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#241b28" stroke-width="1.4" aria-hidden="true"><path d="M12 21c-4-2-7-6-7-10a7 7 0 0 1 14 0c0 4-3 8-7 10z"/></svg></div>
-          <div class="card-body">
-            <span class="card-cat">Wellness</span>
-            <h3>Por que o sono ruim raramente é culpa do colchão</h3>
-            <p>Hábitos das duas horas antes de dormir explicam boa parte das noites mal dormidas.</p>
-            <a class="read-more" href="#">Ler artigo →</a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- BEAUTY -->
-  <section id="beauty">
-    <div class="mini-hero">
-      <p class="tag">seção</p>
-      <h2>Beauty</h2>
-    </div>
-    <div class="section-pad">
-      <div class="grid-articles">
-        <div class="card">
-          <div class="card-media" style="background:var(--teal)"><svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#241b28" stroke-width="1.4" aria-hidden="true"><path d="M12 2c3 4 6 7.5 6 11a6 6 0 0 1-12 0c0-3.5 3-7 6-11z"/></svg></div>
-          <div class="card-body">
-            <span class="card-cat">Beauty</span>
-            <h3>Três produtos que sobram quando a rotina é cortada pela metade</h3>
-            <p>Um teste de dois meses sem compras novas aponta o que faz diferença de verdade.</p>
-            <a class="read-more" href="#">Ler artigo →</a>
-          </div>
-        </div>
-        <div class="card">
-          <div class="card-media" style="background:var(--blush)"><svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#241b28" stroke-width="1.4" aria-hidden="true"><path d="M12 2c3 4 6 7.5 6 11a6 6 0 0 1-12 0c0-3.5 3-7 6-11z"/></svg></div>
-          <div class="card-body">
-            <span class="card-cat">Beauty</span>
-            <h3>Base ou hidratante: o passo que costuma ser ignorado antes da compra</h3>
-            <p>Entender o tipo de pele evita gasto com produto errado.</p>
-            <a class="read-more" href="#">Ler artigo →</a>
-          </div>
-        </div>
-        <div class="card">
-          <div class="card-media" style="background:var(--blush-deep)"><svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#241b28" stroke-width="1.4" aria-hidden="true"><path d="M12 2c3 4 6 7.5 6 11a6 6 0 0 1-12 0c0-3.5 3-7 6-11z"/></svg></div>
-          <div class="card-body">
-            <span class="card-cat">Beauty</span>
-            <h3>O que profissionais de manicure raramente explicam sobre unha fraca</h3>
-            <p>Três hábitos com mais efeito do que qualquer fortalecedor.</p>
-            <a class="read-more" href="#">Ler artigo →</a>
-          </div>
-        </div>
-        <div class="card">
-          <div class="card-media" style="background:var(--mustard)"><svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#241b28" stroke-width="1.4" aria-hidden="true"><path d="M12 2c3 4 6 7.5 6 11a6 6 0 0 1-12 0c0-3.5 3-7 6-11z"/></svg></div>
-          <div class="card-body">
-            <span class="card-cat">Beauty</span>
-            <h3>O item que dermatologistas repetem em quase toda recomendação</h3>
-            <p>Não é o mais caro do nécessaire — e é o que mais pesa a longo prazo.</p>
-            <a class="read-more" href="#">Ler artigo →</a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- CULTURA -->
-  <section id="cultura">
-    <div class="mini-hero">
-      <p class="tag">seção</p>
-      <h2>Cultura</h2>
+      <h2>Artigos</h2>
     </div>
     <div class="section-pad">
       <div class="grid-articles">
@@ -902,42 +725,6 @@
           </div>
         </div>
 
-        <div class="card">
-          <div class="card-media" style="background:var(--mustard)"><svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#241b28" stroke-width="1.4" aria-hidden="true"><path d="M4 5c3-1.5 6-1.5 8 0v14c-2-1.5-5-1.5-8 0V5z"/><path d="M20 5c-3-1.5-6-1.5-8 0v14c2-1.5 5-1.5 8 0V5z"/></svg></div>
-          <div class="card-body">
-            <span class="card-cat">Cultura</span>
-            <h3>O documentário que reacendeu a discussão sobre tempo de tela</h3>
-            <p>Uma produção recente coloca em pauta o consumo de conteúdo no dia a dia.</p>
-            <a class="read-more" href="#">Ler artigo →</a>
-          </div>
-        </div>
-        <div class="card">
-          <div class="card-media" style="background:var(--sage)"><svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#fffdfa" stroke-width="1.4" aria-hidden="true"><path d="M4 5c3-1.5 6-1.5 8 0v14c-2-1.5-5-1.5-8 0V5z"/><path d="M20 5c-3-1.5-6-1.5-8 0v14c2-1.5 5-1.5 8 0V5z"/></svg></div>
-          <div class="card-body">
-            <span class="card-cat">Cultura</span>
-            <h3>Três livros curtos para quem só lê no trajeto de ônibus</h3>
-            <p>Nenhum passa de 160 páginas — e nenhum é autoajuda.</p>
-            <a class="read-more" href="#">Ler artigo →</a>
-          </div>
-        </div>
-        <div class="card">
-          <div class="card-media" style="background:var(--blush)"><svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#241b28" stroke-width="1.4" aria-hidden="true"><path d="M4 5c3-1.5 6-1.5 8 0v14c-2-1.5-5-1.5-8 0V5z"/><path d="M20 5c-3-1.5-6-1.5-8 0v14c2-1.5 5-1.5 8 0V5z"/></svg></div>
-          <div class="card-body">
-            <span class="card-cat">Cultura</span>
-            <h3>A exposição que segue repercutindo semanas após o fim</h3>
-            <p>Uma mostra pequena, pouco divulgada, que superou a expectativa do público.</p>
-            <a class="read-more" href="#">Ler artigo →</a>
-          </div>
-        </div>
-        <div class="card">
-          <div class="card-media" style="background:var(--blush-deep)"><svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#241b28" stroke-width="1.4" aria-hidden="true"><path d="M4 5c3-1.5 6-1.5 8 0v14c-2-1.5-5-1.5-8 0V5z"/><path d="M20 5c-3-1.5-6-1.5-8 0v14c2-1.5 5-1.5 8 0V5z"/></svg></div>
-          <div class="card-body">
-            <span class="card-cat">Cultura</span>
-            <h3>A playlist que acompanha a produção de cada edição</h3>
-            <p>Uma seleção que passou a fazer parte do processo editorial, não só do fundo musical.</p>
-            <a class="read-more" href="#">Ler artigo →</a>
-          </div>
-        </div>
       </div>
     </div>
   </section>
@@ -946,7 +733,7 @@
   <section id="artigo-estetica">
     <header class="artigo-head">
       <div class="crumbs">
-        <button type="button" onclick="goTo('cultura')">← Cultura</button>
+        <button type="button" onclick="goTo('artigos')">← Artigos</button>
         <span aria-hidden="true">/</span>
         <span>texto + vídeo</span>
       </div>
@@ -996,10 +783,10 @@
       <div class="artigo-next-box">
         <div>
           <h3>Quer continuar lendo?</h3>
-          <p>Veja os outros textos da editoria de Cultura ou assine para receber os próximos blogs e vídeos da série.</p>
+          <p>Veja os outros artigos ou assine para receber os próximos blogs e vídeos da série.</p>
         </div>
         <div style="display:flex; gap:10px; flex-wrap:wrap;">
-          <button class="btn outline" onclick="goTo('cultura')">Mais de Cultura</button>
+          <button class="btn outline" onclick="goTo('artigos')">Mais artigos</button>
           <button class="btn coral" onclick="goTo('contato')">Assinar</button>
         </div>
       </div>
@@ -1010,7 +797,7 @@
   <section id="artigo-esporte">
     <header class="artigo-head esporte">
       <div class="crumbs">
-        <button type="button" onclick="goTo('cultura')">← Cultura</button>
+        <button type="button" onclick="goTo('artigos')">← Artigos</button>
         <span aria-hidden="true">/</span>
         <span>texto + vídeo</span>
       </div>
@@ -1062,10 +849,10 @@
       <div class="artigo-next-box">
         <div>
           <h3>Quer continuar lendo?</h3>
-          <p>Veja os outros textos da editoria de Cultura ou assine para receber os próximos blogs e vídeos da série.</p>
+          <p>Veja os outros artigos ou assine para receber os próximos blogs e vídeos da série.</p>
         </div>
         <div style="display:flex; gap:10px; flex-wrap:wrap;">
-          <button class="btn outline" onclick="goTo('cultura')">Mais de Cultura</button>
+          <button class="btn outline" onclick="goTo('artigos')">Mais artigos</button>
           <button class="btn coral" onclick="goTo('contato')">Assinar</button>
         </div>
       </div>
@@ -1076,7 +863,7 @@
   <section id="artigo-performance">
     <header class="artigo-head performance">
       <div class="crumbs">
-        <button type="button" onclick="goTo('cultura')">← Cultura</button>
+        <button type="button" onclick="goTo('artigos')">← Artigos</button>
         <span aria-hidden="true">/</span>
         <span>texto + vídeo</span>
       </div>
@@ -1117,10 +904,10 @@
       <div class="artigo-next-box">
         <div>
           <h3>Quer continuar lendo?</h3>
-          <p>Veja os outros textos da editoria de Cultura ou assine para receber os próximos blogs e vídeos da série.</p>
+          <p>Veja os outros artigos ou assine para receber os próximos blogs e vídeos da série.</p>
         </div>
         <div style="display:flex; gap:10px; flex-wrap:wrap;">
-          <button class="btn outline" onclick="goTo('cultura')">Mais de Cultura</button>
+          <button class="btn outline" onclick="goTo('artigos')">Mais artigos</button>
           <button class="btn coral" onclick="goTo('contato')">Assinar</button>
         </div>
       </div>
@@ -1181,8 +968,8 @@
 
     var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-    // páginas de artigo ficam "dentro" de uma aba do menu
-    var navParent = { 'artigo-estetica': 'cultura', 'artigo-esporte': 'cultura', 'artigo-performance': 'cultura' };
+    // páginas de artigo ficam "dentro" da aba Artigos do menu
+    var navParent = { 'artigo-estetica': 'artigos', 'artigo-esporte': 'artigos', 'artigo-performance': 'artigos' };
 
     function goTo(id){
       // pausa qualquer vídeo ao sair do artigo
