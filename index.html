@@ -496,6 +496,18 @@
   }
   .artigo-head.performance h2 em{color:var(--coral-deep);}
 
+  /* cabeçalho do artigo de maquiagem: mostarda com lâmpadas de camarim */
+  .feature.verde{background:var(--sage);}
+  .artigo-head.maquiagem{position:relative; background-color:var(--mustard); padding-bottom:84px;}
+  .artigo-head.maquiagem::after{
+    content:""; position:absolute; left:0; right:0; bottom:0; height:50px;
+    background:
+      radial-gradient(circle at 50% 50%, var(--paper) 0 9px, var(--plum) 9.5px 11px, transparent 11.5px) 0 0 / 48px 50px repeat-x,
+      var(--mustard);
+    border-top:1px solid var(--plum);
+  }
+  .artigo-head.maquiagem h2 em{color:var(--paper);}
+
   /* ==================== MOVIMENTO REDUZIDO ==================== */
   @media (prefers-reduced-motion: reduce){
     html{scroll-behavior:auto;}
@@ -561,6 +573,20 @@
         <h2 style="font-size:clamp(1.6rem,3.6vw,2.1rem);">Comece por aqui</h2>
       </div>
       <div class="grid-articles" style="margin-top:36px;">
+
+        <!-- NOVO ARTIGO EM DESTAQUE: MAQUIAGEM -->
+        <article class="feature alt verde">
+          <div class="feature-media">
+            <img src="poster-maquiagem.jpg" alt="Cena do vídeo do artigo sobre maquiagem" loading="lazy">
+            <span class="play-chip" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="#241b28"><path d="M8 5v14l11-7z"/></svg></span>
+          </div>
+          <div class="feature-body">
+            <div class="eyebrow"><span class="badge-new">Novo artigo</span> Beauty</div>
+            <h3>Um rosto, várias versões</h3>
+            <p>Entrevista, festa ou domingo no mercado: a maquiagem muda, e a pessoa por trás dela continua sendo você.</p>
+            <button class="btn" onclick="goTo('artigo-maquiagem')">Ler e assistir →</button>
+          </div>
+        </article>
 
         <!-- NOVO ARTIGO EM DESTAQUE: PERFORMANCE -->
         <article class="feature rosa">
@@ -678,6 +704,21 @@
     </div>
     <div class="section-pad">
       <div class="grid-articles">
+
+        <!-- NOVO ARTIGO: MAQUIAGEM -->
+        <div class="card">
+          <div class="card-media has-img">
+            <img src="poster-maquiagem.jpg" alt="Cena do vídeo do artigo sobre maquiagem" loading="lazy">
+            <span class="badge-new">Novo</span>
+            <span class="play-chip" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="#241b28"><path d="M8 5v14l11-7z"/></svg></span>
+          </div>
+          <div class="card-body">
+            <span class="card-cat">Beauty · texto + vídeo</span>
+            <h3>Um rosto, várias versões</h3>
+            <p>Entrevista, festa e domingo: três maquiagens, três versões de você. Qual aparece quando ninguém está olhando?</p>
+            <a class="read-more" href="#artigo-maquiagem" onclick="goTo('artigo-maquiagem'); return false;">Ler artigo →</a>
+          </div>
+        </div>
 
         <!-- NOVO ARTIGO: PERFORMANCE -->
         <div class="card">
@@ -858,6 +899,65 @@
     </div>
   </section>
 
+  <!-- ARTIGO: UM ROSTO, VÁRIAS VERSÕES -->
+  <section id="artigo-maquiagem">
+    <header class="artigo-head maquiagem">
+      <div class="crumbs">
+        <button type="button" onclick="goTo('artigos')">← Artigos</button>
+        <span aria-hidden="true">/</span>
+        <span>texto + vídeo</span>
+      </div>
+      <h2>Um rosto, várias <em>versões</em></h2>
+      <div class="artigo-meta">
+        <span>Beauty</span>
+        <span>leitura de 2 min</span>
+      </div>
+    </header>
+
+    <div class="artigo-wrap">
+      <div class="artigo-texto">
+        <p class="lead">Pensa na maquiagem que você faria para uma entrevista de emprego. Agora na de uma festa de sábado. E agora na do domingo à tarde, quando o plano é só ir ao mercado. Mesmo rosto, três resultados bem diferentes, e provavelmente três versões de você por trás deles.</p>
+        <p>A da entrevista costuma ser organizada: pele uniforme, nada que roube a atenção, um tom de “pode confiar”. A da balada pede mais: brilho, cor, um delineado que sobreviva à luz do banheiro. A do domingo, muitas vezes, é só um hidratante e pronto. Ninguém precisa explicar nada disso. A gente entende pelo visual qual personagem está em cena.</p>
+        <p>Essa ideia não é nova. Em meados do século passado, o sociólogo Erving Goffman comparou a vida social a um teatro: agimos de um jeito no palco, diante dos outros, e de outro nos bastidores. Na vida real, o espelho do banheiro é um bom camarim, e a maquiagem faz parte do figurino de quem vai entrar em cena.</p>
+        <p>A cultura pop explora isso com gosto. Euphoria ficou conhecida por usar a maquiagem quase como parte do roteiro: glitter, strass e cor contam o que as personagens sentem antes de qualquer fala. Na cultura drag, o processo vai ainda mais longe, e a make é o que dá forma a uma persona inteira, mostrando como o rosto pode virar tela.</p>
+        <p>Existe ainda a maquiagem de armadura, a que não é para ninguém, é para dar coragem. O batom vermelho antes da apresentação do trabalho. O delineado perfeito no dia em que nada parece estar no lugar. Aquela maquiagem que não muda o rosto, mas muda a postura, e é isso que o outro percebe.</p>
+        <p class="pergunta">Então isso quer dizer que tudo é fingimento?</p>
+        <p>Longe disso. Nenhuma dessas versões é mentira. Quem passa batom para uma festa não deixa de ser a mesma pessoa que vai ao mercado de cara lavada. A make só ajuda a destacar uma parte de quem a gente já é naquele momento.</p>
+        <p>O ponto de atenção é outro: quando uma única versão vira a obrigatória. Quando a frase é “só me sinto eu de maquiagem completa”, ou quando a versão de domingo some porque ninguém mais a vê. Aí a maquiagem deixa de ser figurino e vira uniforme, e é difícil trocar de papel quando só um cabe no guarda-roupa.</p>
+        <p>Talvez o mais saudável seja tratar a maquiagem como a gente trata roupa: algo para escolher conforme o dia, o humor e a vontade, sem que nenhuma opção pareça mais “verdadeira”. A entrevista, a festa e o domingo merecem o mesmo respeito.</p>
+        <p class="fechamento">Fica a pergunta, que vale para o próximo dia diante do espelho: que versão de você está sendo montada hoje? E qual delas aparece quando ninguém está olhando?</p>
+        <div class="tags" aria-label="Temas do artigo">
+          <span>maquiagem</span><span>beauty</span><span>identidade</span><span>autoexpressão</span>
+        </div>
+      </div>
+
+      <aside class="artigo-video" aria-label="Vídeo do artigo">
+        <div class="phone">
+          <video controls playsinline preload="metadata" poster="poster-maquiagem.jpg" data-title="maquiagem">
+            <source src="video-maquiagem.mp4" type="video/mp4">
+            Seu navegador não suporta a reprodução de vídeo.
+          </video>
+        </div>
+        <p class="video-legenda">Assista ao vídeo que acompanha o texto.</p>
+      </aside>
+    </div>
+
+    <div class="engage" data-artigo="maquiagem"></div>
+
+    <div class="artigo-next">
+      <div class="artigo-next-box">
+        <div>
+          <h3>Quer continuar lendo?</h3>
+          <p>Veja os outros artigos ou assine para receber os próximos blogs e vídeos da série.</p>
+        </div>
+        <div style="display:flex; gap:10px; flex-wrap:wrap;">
+          <button class="btn outline" onclick="goTo('artigos')">Mais artigos</button>
+          <button class="btn coral" onclick="goTo('contato')">Assinar</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- ARTIGO: POR QUE TUDO VIROU PERFORMANCE? -->
   <section id="artigo-performance">
     <header class="artigo-head performance">
@@ -968,7 +1068,7 @@
     var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
     // páginas de artigo ficam "dentro" da aba Artigos do menu
-    var navParent = { 'artigo-estetica': 'artigos', 'artigo-esporte': 'artigos', 'artigo-performance': 'artigos' };
+    var navParent = { 'artigo-estetica': 'artigos', 'artigo-esporte': 'artigos', 'artigo-performance': 'artigos', 'artigo-maquiagem': 'artigos' };
 
     function goTo(id){
       // pausa qualquer vídeo ao sair do artigo
